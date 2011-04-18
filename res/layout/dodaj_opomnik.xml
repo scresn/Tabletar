@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent">
+        <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/interval1"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent">
+        <Spinner android:id="@+id/spinner1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:visibility="visible"></Spinner>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="match_parent">
+        <TextView android:layout_height="wrap_content" android:text="@string/Zdravilo" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout4" android:layout_width="match_parent">
+        <Spinner android:id="@+id/spinner2" android:layout_width="wrap_content" android:layout_height="wrap_content"></Spinner>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout5" android:layout_width="match_parent">
+        <TextView android:layout_height="wrap_content" android:text="@string/Cas" android:id="@+id/textView3" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout6" android:layout_width="match_parent">
+        <TimePicker android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/timePicker1" android:layout_width="wrap_content"></TimePicker>
+    </LinearLayout>
+</LinearLayout>

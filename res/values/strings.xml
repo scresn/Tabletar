@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Tabletar!</string>
+    <string name="app_name">Tabletar</string>
+    <string name="Interval"></string>
+    <string name="interval1">Interval</string>
+    <string name="Zdravilo">Zdravilo</string>
+    <string name="Cas">Čas</string>
+    <string name="Kolicina">Kolicina</string>
+    
+    
+    
+    
+</resources>
