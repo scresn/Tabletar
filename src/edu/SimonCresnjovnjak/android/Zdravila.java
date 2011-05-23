@@ -39,7 +39,7 @@ public class Zdravila {
 	
 	
 	
-	public void setCas(int i) {
+	public void setKolicina(int i) {
 		  Kolicina=i;
 	  }
 	

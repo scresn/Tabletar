@@ -1,4 +1,4 @@
-package edu.SimonCresnjovnjak.data1;
+package edu.SimonCresnjovnjak.data3;
 
 
 
@@ -76,7 +76,7 @@ public class DBAdapterZdravila implements BaseColumns {
 				null, 
 				null);
 	}
-
+	
 	//---retrieves a particular title---
 	public Cursor getRezultat(long rowId) throws SQLException 
 	{

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/med">
+    <LinearLayout android:id="@+id/linearLayout7" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20px"></LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_marginBottom="20px">
+        <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ime Tablete:" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:gravity="center" android:layout_marginBottom="20px">
+        <EditText android:text="EditText" android:id="@+id/editText1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="30px" android:paddingRight="30px"></EditText>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_marginBottom="20px">
+        <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Količina zdravila:" android:textColor="@color/black" android:textSize="18px" android:capitalize="characters"></TextView>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center">
+        <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:paddingLeft="30px" android:paddingRight="30px" android:layout_width="wrap_content" android:minWidth="110px"></Spinner>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="20px" ></LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout6" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center">
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="30px" android:paddingRight="30px" android:onClick="klik" android:text="Dodaj" android:id="@+id/dodaj1"></Button>
+    </LinearLayout>
+</LinearLayout>

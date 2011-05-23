@@ -3,7 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
   
   <item android:id="@+id/dodajop" android:icon="@android:drawable/ic_menu_rotate" android:title="Dodaj opomnik" ></item>
-  <item android:id="@+id/odstrani" android:icon="@android:drawable/ic_menu_info_details" android:title="Odstrani" ></item>
+  <item android:icon="@android:drawable/ic_menu_info_details" android:title="Novo Zdravilo" android:id="@+id/novo"></item>
   <item android:id="@+id/izh" android:icon="@android:drawable/ic_menu_close_clear_cancel" android:title="Izhod" ></item>
-  <item android:id="@+id/dodajzd" android:icon="@android:drawable/ic_menu_preferences" android:title="Dodaj Zdravilo"></item>
+  <item android:icon="@android:drawable/ic_menu_preferences" android:title="Dodaj Zalogo" android:id="@+id/dodajzl"></item>
+  
 </menu>
