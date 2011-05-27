@@ -21,12 +21,19 @@ public class main extends Activity {
     private static final int DODAJ_OPOMNIK_ACTIVITY_ID = 1;
     private static final int DODAJ_ZALOGO_ACTIVITY_ID = 2;
     private static final int DODAJ_NOVO_ACTIVITY_ID = 3;
+    private static final int LISTA_ZDRAVIL_ACTIVITY_ID = 5;
     private static final int EXIT_DIALOG=4; 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zdravila_layout);
     	app = (Application1) getApplication();
+    	
+    		Intent moj3=new Intent(this,NovoZdr.class);
+    		
+    		this.startActivityForResult(moj3, DODAJ_NOVO_ACTIVITY_ID);
+    	
+    	
     	
     }
     
@@ -54,6 +61,12 @@ public boolean onOptionsItemSelected(MenuItem item) {
 		Intent moj1=new Intent(this,DodajOpomnik.class);
 		this.startActivityForResult(moj1, DODAJ_OPOMNIK_ACTIVITY_ID);
 		
+		break;
+	case R.id.listazdr:
+		Intent moj4=new Intent(this,DodajZalogo.class);
+		
+		this.startActivityForResult(moj4, LISTA_ZDRAVIL_ACTIVITY_ID);
+	
 		break;
 	default:// Generic catch all for all the other menu resources
 		if (!item.hasSubMenu()) {

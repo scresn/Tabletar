@@ -22,19 +22,35 @@ public class DodajOpomnik extends Activity{
 			setContentView(R.layout.dodaj_opomnik);
 			app = (Application1) getApplication();
 			
-			Spinner spi1;
+			Spinner spi1, spi2;
 			spi1=(Spinner) findViewById(R.id.spinner1);
+			spi2=(Spinner) findViewById(R.id.spinner2);
 			
-			//app.getnazivi();
+			
+			app.getnazivi();
 			
 			 
 			   
 			    	ArrayList<String> zacasni=new ArrayList<String>();
-			    	zacasni.add("Lekadol");
+			    	ArrayList<String> zacasni2=new ArrayList<String>();
+			    	
+			    	zacasni.add("Ponedeljek");
+			    	zacasni.add("Torek");
+			    	zacasni.add("Sreda");
+			    	zacasni.add("Èetrtek");
+			    	zacasni.add("Petek");
+			    	zacasni.add("Sobota");
+			    	zacasni.add("Nedelja");
+			    	
+			    	
 			    	
 			    	ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, zacasni);
 			    	adapter.setNotifyOnChange(true);
 					spi1.setAdapter(adapter);
+					
+					ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, app.array_spinner1);
+			    	adapter2.setNotifyOnChange(true);
+					spi2.setAdapter(adapter2);
 			    
 			   
 			    

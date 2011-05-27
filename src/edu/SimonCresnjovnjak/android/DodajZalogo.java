@@ -17,17 +17,28 @@ public class DodajZalogo extends Activity{
 			setContentView(R.layout.dodaj_zalogo);
 			app = (Application1) getApplication();
 			
-			Spinner spi1;
-			spi1=(Spinner) findViewById(R.id.spinner2);
-			ArrayList<String> a= new ArrayList<String>();
-			a.add("5");
-			a.add("10");
-			a.add("15");
-			a.add("20");
+			Spinner spi1, spi2;
+			spi2=(Spinner) findViewById(R.id.spinner2);
+			spi1=(Spinner) findViewById(R.id.spinner1);
 			
-			ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, a);
-		    adapter.setNotifyOnChange(true);
-		    spi1.setAdapter(adapter);
+			app.getnazivi();
+			
+			
+			ArrayList<String> araylist2 = new ArrayList<String>();
+			
+			
+			araylist2.add("5");
+			araylist2.add("10");
+			araylist2.add("15");
+			araylist2.add("20");
+			
+			ArrayAdapter adapter1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, araylist2);
+		    adapter1.setNotifyOnChange(true);
+		    spi2.setAdapter(adapter1);
+			
+			ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, app.array_spinner1);
+		    adapter1.setNotifyOnChange(true);
+		    spi1.setAdapter(adapter2);
 	
 	}
 }

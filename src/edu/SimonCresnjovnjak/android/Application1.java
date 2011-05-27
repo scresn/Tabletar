@@ -26,6 +26,7 @@ public class Application1 extends Application{
         //DBOp = new DBAdapterOpomnik(this); 
         DBZd= new DBAdapterZdravila(this);
         lista = new ArrayList<Zdravila>(); //inicializirat
+        array_spinner1= new ArrayList<String>();
          init();
          fillFromDB();
         stevci = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
@@ -86,14 +87,11 @@ public class Application1 extends Application{
 	{
 		DBZd.open();
 		Cursor c = DBZd.getAll();
-		array_spinner1.add("Lekadol");
-		
-		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-			
+		//array_spinner1.add("Lekadol");
+		array_spinner1.clear();
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) 
+		{
 			array_spinner1.add(c.getString(DBAdapterZdravila.POS_NAZIV));
-			
-			
-			
 		}
 		c.close();
 		DBZd.close();
