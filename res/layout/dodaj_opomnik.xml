@@ -4,25 +4,25 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/med" android:paddingTop="15px">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center">
-        <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/interval1" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters"></TextView>
+        <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/interval1" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:gravity="center">
-        <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:visibility="visible" android:drawingCacheQuality="high" android:animationCache="true" android:layout_marginLeft="30px" android:layout_marginRight="30px" android:layout_width="wrap_content" android:minWidth="110px"></Spinner>
+        <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:visibility="visible" android:drawingCacheQuality="high" android:animationCache="true" android:minWidth="110px" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Spinner>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="match_parent" android:gravity="center">
-        <TextView android:layout_height="wrap_content" android:text="@string/Zdravilo" android:id="@+id/textView2" android:layout_width="wrap_content" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters"></TextView>
+        <TextView android:layout_height="wrap_content" android:text="@string/Zdravilo" android:id="@+id/textView2" android:layout_width="wrap_content" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout5" android:layout_width="match_parent" android:gravity="center">
-        <Spinner android:id="@+id/spinner2" android:layout_marginLeft="30px" android:minWidth="110px" android:layout_marginRight="30px" android:layout_width="wrap_content" android:layout_height="wrap_content"></Spinner>
+        <Spinner android:id="@+id/spinner2" android:minWidth="110px" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Spinner>
     </LinearLayout>
     <LinearLayout android:gravity="center" android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="5px">
         <TextView android:textSize="18px" android:id="@+id/textView3" android:text="@string/Cas" android:textColor="@color/black" android:capitalize="characters" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout6" android:layout_width="match_parent">
-        <TimePicker android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/timePicker1" android:layout_width="wrap_content" android:layout_marginBottom="20px"></TimePicker>
+    <LinearLayout android:id="@+id/linearLayout6" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="center" android:gravity="center">
+        <TimePicker android:id="@+id/timePicker1" android:layout_width="wrap_content" android:layout_gravity="center" android:layout_height="wrap_content"></TimePicker>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout7" android:gravity="center">
-        <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:width="70px" android:text="Dodaj"></Button>
+        <Button android:id="@+id/button1" android:gravity="center" android:text="Dodaj" android:layout_height="match_parent" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Button>
        
     </LinearLayout>
    

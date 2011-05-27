@@ -6,7 +6,9 @@ import java.util.List;
 
 import android.R.string;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -51,9 +53,7 @@ public class DodajOpomnik extends Activity{
 					ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, app.array_spinner1);
 			    	adapter2.setNotifyOnChange(true);
 					spi2.setAdapter(adapter2);
-			    
-			   
-			    
+
 
 	}
 	
