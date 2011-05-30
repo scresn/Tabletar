@@ -2,6 +2,7 @@ package edu.SimonCresnjovnjak.android;
 
 
 
+import edu.SimonCresnjovnajk.maps.KjeSemActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,17 +24,19 @@ public class main extends Activity {
     private static final int DODAJ_NOVO_ACTIVITY_ID = 3;
     private static final int LISTA_ZDRAVIL_ACTIVITY_ID = 5;
     private static final int EXIT_DIALOG=4; 
+    private static final int MAPA=6; 
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.zdravila_layout);
+        setContentView(R.layout.opomniki_layout);
     	app = (Application1) getApplication();
     	
     		Intent moj3=new Intent(this,NovoZdr.class);
     		
     		this.startActivityForResult(moj3, DODAJ_NOVO_ACTIVITY_ID);
     	
-    	
+    	app.fillFromDB();
     	
     }
     
@@ -63,9 +66,15 @@ public boolean onOptionsItemSelected(MenuItem item) {
 		
 		break;
 	case R.id.listazdr:
-		Intent moj4=new Intent(this,DodajZalogo.class);
+		Intent moj4=new Intent(this,ZdravilaListActivity.class);
 		
 		this.startActivityForResult(moj4, LISTA_ZDRAVIL_ACTIVITY_ID);
+	
+		break;
+	case R.id.map:
+		Intent moj5=new Intent(this,edu.SimonCresnjovnajk.maps.KjeSemActivity.class);
+		
+		this.startActivityForResult(moj5, MAPA);
 	
 		break;
 	default:// Generic catch all for all the other menu resources

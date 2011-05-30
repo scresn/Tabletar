@@ -22,8 +22,8 @@
         <TimePicker android:id="@+id/timePicker1" android:layout_width="wrap_content" android:layout_gravity="center" android:layout_height="wrap_content"></TimePicker>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout7" android:gravity="center">
-        <Button android:id="@+id/button1" android:gravity="center" android:text="Dodaj" android:layout_height="match_parent" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Button>
        
+       <ImageButton android:id="@+id/imageButton1" android:src="@drawable/gmbdodaj3" android:layout_height="wrap_content" android:layout_width="wrap_content" android:onClick="KlikDodajOpomnik" android:background="@null"></ImageButton>
     </LinearLayout>
    
 </LinearLayout>

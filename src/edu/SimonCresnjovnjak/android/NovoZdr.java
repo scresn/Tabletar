@@ -39,8 +39,8 @@ public class NovoZdr extends Activity {
 
 	 public void klik(View v) {
 	    	switch (v.getId()) {
-			case R.id.dodaj1:
-				Toast.makeText(this, "test", Toast.LENGTH_SHORT)
+			case R.id.imageButton1:
+				Toast.makeText(this, "Vaše zdravilo je bilo dodano", Toast.LENGTH_SHORT)
 				.show();
 					String b=text1.getText().toString();
 						app.MojaZdravila.setName(b);

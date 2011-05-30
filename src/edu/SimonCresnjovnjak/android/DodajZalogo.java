@@ -2,14 +2,20 @@ package edu.SimonCresnjovnjak.android;
 
 import java.util.ArrayList;
 
+import org.xml.sax.Parser;
+
+import android.R.integer;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class DodajZalogo extends Activity{
 	
 		Application1 app;
+		Spinner spi1, spi2;
 		
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -17,7 +23,7 @@ public class DodajZalogo extends Activity{
 			setContentView(R.layout.dodaj_zalogo);
 			app = (Application1) getApplication();
 			
-			Spinner spi1, spi2;
+			
 			spi2=(Spinner) findViewById(R.id.spinner2);
 			spi1=(Spinner) findViewById(R.id.spinner1);
 			
@@ -41,4 +47,18 @@ public class DodajZalogo extends Activity{
 		    spi1.setAdapter(adapter2);
 	
 	}
+		 public void KlikZaloga(View v) {
+		    	switch (v.getId()) {
+				case R.id.imageButton1:
+				{
+					Toast.makeText(this, "Vaša zaloga je bila dodana", Toast.LENGTH_SHORT)
+					.show(); 
+					int a=Integer.parseInt(spi2.getSelectedItem().toString());
+					//System.out.println(spi1.getSelectedItem().toString());
+					app.DodajZal(spi1.getSelectedItem().toString(),a );
+					app.array_spinner1.clear();
+					app.fillFromDB();
+				}
+		    	}
+		 }
 }

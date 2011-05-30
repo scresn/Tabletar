@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class DodajOpomnik extends Activity{
@@ -56,6 +57,14 @@ public class DodajOpomnik extends Activity{
 
 
 	}
-	
+		 public void KlikDodajOpomnik(View v) {
+		    	switch (v.getId()) {
+				case R.id.imageButton1:
+				{
+					Toast.makeText(this, "Vaš opomnik je bil dodan", Toast.LENGTH_SHORT)
+					.show(); 
+				}
+		    	}
+		 }
 }
 

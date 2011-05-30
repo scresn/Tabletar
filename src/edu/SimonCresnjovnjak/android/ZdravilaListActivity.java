@@ -19,7 +19,7 @@ public class ZdravilaListActivity extends ListActivity implements OnItemClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zdravilalist_activity);
 		app = (Application1) getApplication();
-		setListAdapter(app.stevci);
+		setListAdapter(app.zd);
 		this.getListView().setOnItemClickListener(this);
 		app.lista.clear();
 		app.fillFromDB();

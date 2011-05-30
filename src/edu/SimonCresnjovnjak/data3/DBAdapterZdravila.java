@@ -58,7 +58,7 @@ public class DBAdapterZdravila implements BaseColumns {
 	}
 
 	//---deletes a particular title---
-	public boolean deleteRezultat(long rowId) 
+	public boolean deleteZdravila(long rowId) 
 	{
 		return DBZdravila.delete(TABLE, _ID + "=" + rowId, null) > 0;
 	}
@@ -98,7 +98,7 @@ public class DBAdapterZdravila implements BaseColumns {
 	}
 
 	//---update---
-	public boolean updateRezultat(Zdravila tmp) 
+	public boolean updateZdravila(Zdravila tmp) 
 	{
 		ContentValues args = new ContentValues();
 		args.put(NAZIV, tmp.getName());
