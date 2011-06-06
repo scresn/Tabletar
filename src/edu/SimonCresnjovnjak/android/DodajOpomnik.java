@@ -8,31 +8,34 @@ import android.R.string;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
 public class DodajOpomnik extends Activity{
 	
 		Application1 app;
-		
-		
+		TimePicker tipck;
+		Spinner spi1, spi2;
+		Opomnik op=new Opomnik();
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.dodaj_opomnik);
 			app = (Application1) getApplication();
 			
-			Spinner spi1, spi2;
+			
 			spi1=(Spinner) findViewById(R.id.spinner1);
 			spi2=(Spinner) findViewById(R.id.spinner2);
-			
+			tipck=(TimePicker) findViewById(R.id.timePicker1);
 			
 			app.getnazivi();
 			
-			 
+			 tipck.setIs24HourView(true);
 			   
 			    	ArrayList<String> zacasni=new ArrayList<String>();
 			    	ArrayList<String> zacasni2=new ArrayList<String>();
@@ -63,6 +66,19 @@ public class DodajOpomnik extends Activity{
 				{
 					Toast.makeText(this, "Vaš opomnik je bil dodan", Toast.LENGTH_SHORT)
 					.show(); 
+					String a=spi1.getSelectedItem().toString();
+					String aa=spi2.getSelectedItem().toString();
+					
+					Time caaas=new Time();
+					//System.out.println(spi1.getSelectedItem().toString());
+					caaas.hour=tipck.getCurrentHour();
+					caaas.minute=tipck.getCurrentMinute();
+					op.setCas(caaas);
+					op.setInterval(a);
+					op.setZdravilo(aa);
+					app.addOp(op);
+					app.array_spinner1.clear();
+					app.fillFromDB();
 				}
 		    	}
 		 }

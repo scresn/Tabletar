@@ -40,16 +40,23 @@ public class NovoZdr extends Activity {
 	 public void klik(View v) {
 	    	switch (v.getId()) {
 			case R.id.imageButton1:
-				Toast.makeText(this, "Vaše zdravilo je bilo dodano", Toast.LENGTH_SHORT)
-				.show();
+				
 					String b=text1.getText().toString();
+					if(!b.contentEquals(""))
+					{
 						app.MojaZdravila.setName(b);
-						
+						Toast.makeText(this, "Vaše zdravilo je bilo dodano", Toast.LENGTH_SHORT)
+						.show();
 						String a=spi1.getItemAtPosition(spi1.getSelectedItemPosition()).toString();
 						int aa= Integer.parseInt(a);
 						app.MojaZdravila.setKolicina(aa);
 						app.addZd(app.MojaZdravila);
-						
+					}
+					else
+					{
+						Toast.makeText(this, "Ime zdravila nesme biti prazno !!!!!", Toast.LENGTH_SHORT)
+						.show();
+					}
 						
 					break;
 				

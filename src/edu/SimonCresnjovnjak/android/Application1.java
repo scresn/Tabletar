@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 
 
+import edu.SimonCresnjovnjak.data3.DBAdapterOpomniki;
 import edu.SimonCresnjovnjak.data3.DBAdapterZdravila;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -20,13 +21,14 @@ public class Application1 extends Application{
 	public ArrayList<Zdravila> lista;
 	ZdravilaArrayAdapter zd;
 	Zdravila MojaZdravila;
-	//DBAdapterOpomnik DBOp;
+	Opomnik MojOpomnik;
+	DBAdapterOpomniki DBOp;
 	DBAdapterZdravila DBZd;
 	public ArrayList<String> array_spinner1;
 	
 	public void onCreate() {
         super.onCreate(); //ne pozabi
-        //DBOp = new DBAdapterOpomnik(this); 
+        DBOp = new DBAdapterOpomniki(this); 
         DBZd= new DBAdapterZdravila(this);
         lista = new ArrayList<Zdravila>(); //inicializirat
         array_spinner1= new ArrayList<String>();
@@ -35,7 +37,10 @@ public class Application1 extends Application{
         zd = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
        
 	}
+	public void testadd()
+	{
 	
+	}
 	public void fillFromDB() {
 		DBZd.open();
 		Cursor c = DBZd.getAll();
@@ -57,12 +62,14 @@ public class Application1 extends Application{
 		
 		
 	}
-	
-	public void addOp(Zdravila a) {
-		Zdravila tmp = new Zdravila(MojaZdravila);
-		addDBZd(tmp);
-		lista.add(a);
-		zd.add(a);  //Step 4.10 Globalna lista
+	public void addDBOP(Opomnik s) {
+		DBOp.open();
+		s.setDbID(DBOp.insertOpomnik(s));
+		DBOp.close();	
+	}
+	public void addOp(Opomnik a) {
+		Opomnik tmp = new Opomnik(a);
+		addDBOP(tmp); //Step 4.10 Globalna lista
 		
 	}
 	public void addZd(Zdravila a) {
@@ -76,11 +83,6 @@ public class Application1 extends Application{
 		if (a!=null)
 		zd.remove(a); //Step 4.10 Globalna lista
 	}
-/*	public void addDBOp(Zdravila s) {
-		DBOp.open();
-		s.setDbID(DBOp.insertOpomnik(s));
-		DBOp.close();	
-	}*/
 	public void addDBZd(Zdravila s) {
 		DBZd.open();
 		s.setDbID(DBZd.insertZdravila(s));
@@ -117,11 +119,7 @@ public class Application1 extends Application{
 			{
 				System.out.println(c.getString(DBAdapterZdravila.POS_NAZIV));
 				kol=c.getInt(DBAdapterZdravila.POS_KOLICINA);
-				
 				DBZd.deleteZdravila(c.getLong(c.getPosition()));
-				
-				
-				//c.getPosition()
 				tmp.setKolicina(kol+kolicina);
 				tmp.setName(zdravilo);
 				tmp.setDbID(c.getPosition());
