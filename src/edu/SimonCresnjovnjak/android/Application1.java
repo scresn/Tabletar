@@ -3,6 +3,7 @@ package edu.SimonCresnjovnjak.android;
 import java.nio.channels.SelectableChannel;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import android.text.format.Time;
 import java.util.ArrayList;
 
 
@@ -19,7 +20,9 @@ import android.app.Application;
 
 public class Application1 extends Application{
 	public ArrayList<Zdravila> lista;
+	public ArrayList<Opomnik> listao;
 	ZdravilaArrayAdapter zd;
+	OpomnikArrayAdapter op;
 	Zdravila MojaZdravila;
 	Opomnik MojOpomnik;
 	DBAdapterOpomniki DBOp;
@@ -31,11 +34,12 @@ public class Application1 extends Application{
         DBOp = new DBAdapterOpomniki(this); 
         DBZd= new DBAdapterZdravila(this);
         lista = new ArrayList<Zdravila>(); //inicializirat
+        listao = new ArrayList<Opomnik>();
         array_spinner1= new ArrayList<String>();
          init();
          fillFromDB();
         zd = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
-       
+        op = new OpomnikArrayAdapter(this,R.layout.opomniki_layout,listao);
 	}
 	public void testadd()
 	{
@@ -54,6 +58,22 @@ public class Application1 extends Application{
 		}
 		c.close();
 		DBZd.close();
+		//----------------------------------
+		DBOp.open();
+		c = DBOp.getAll();
+		Opomnik tmpO;
+		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+			tmpO = new Opomnik();
+			tmpO.setDbID(c.getLong(DBAdapterOpomniki.POS__ID));
+			tmpO.setZdravilo(c.getString(DBAdapterOpomniki.POS_NAME));
+			Time t = new Time();
+			String  bazaCas =c.getString(DBAdapterOpomniki.POS_TIME); 
+			t.parse(bazaCas); //pretvori string v time
+			tmpO.setCas(t);
+			listao.add(tmpO); 
+		}
+		c.close();
+		DBOp.close();
 	}
 	public void init() {
 		 MojaZdravila = new Zdravila();

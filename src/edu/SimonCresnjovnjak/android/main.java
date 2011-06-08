@@ -1,11 +1,9 @@
 package edu.SimonCresnjovnjak.android;
 
 
-
-import edu.SimonCresnjovnajk.maps.KjeSemActivity;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class main extends Activity {
+public class main extends ListActivity {
     /** Called when the activity is first created. */
 	Application1 app;
     Menu mMenu;
@@ -29,9 +27,9 @@ public class main extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.opomniki_layout);
+        setContentView(R.layout.opomnikilist_activity);
     	app = (Application1) getApplication();
-    	
+    	setListAdapter(app.op);
     		Intent moj3=new Intent(this,NovoZdr.class);
     		
     		this.startActivityForResult(moj3, DODAJ_NOVO_ACTIVITY_ID);
