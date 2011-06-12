@@ -41,9 +41,12 @@ public class OpomnikArrayAdapter extends ArrayAdapter<Opomnik> { //Step 4.8 POPR
 			holder = (ViewHolder) convertView.getTag();
 		}
 		// Bind the data efficiently with the holder.
-		holder.one.setText(""+tmp.getDbID()); //Step 4.8 POPRAVI
+		holder.one.setText(""+tmp.getKolicina()+"X"); //Step 4.8 POPRAVI
 		holder.two.setText(tmp.getZdravilo()); //Step 4.8 POPRAVI
-		holder.three.setText(tmp.getInterval()+", "+tmp.getCas().hour+":"+tmp.getCas().minute); //Step 4.8 POPRAVI
+		
+		
+		//holder.three.setText(tmp.getInterval()+", "+tmp.getCas().hour+":"+tmp.getCas().minute); //Step 4.8 POPRAVI
+		holder.three.setText(", "+tmp.getCas().hour+":"+tmp.getCas().minute);
 		//holder.icon.setImageBitmap((position & 1) == 1 ? mIcon1 : mIcon2);
 		return convertView;
 	}

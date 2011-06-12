@@ -5,15 +5,16 @@ import android.text.format.Time;
 public class Opomnik {
 	
 		private String zdravilo="Simon";
-		private String interval="Ponedeljek";
+		//private String interval="Ponedeljek";
+		private int kolicina;
 		private Time cas;
 		private long dbID; //id  v tabeli
 		
 		public Opomnik() 
 		{
 		  zdravilo="";
-		  interval="";
-		  
+		 // interval="";
+		  kolicina=2;
 		  
 		}
 		public long getDbID() {
@@ -30,13 +31,16 @@ public class Opomnik {
 		public void setZdravilo(String zdr) {
 			this.zdravilo = zdr;
 		}
+		/*
 		public String getInterval() {
 			return interval;
 		}
 
+
 		public void setInterval(String inter) {
 			this.interval = inter;
 		}
+		*/
 		public Time getCas() {
 			return cas;
 		}
@@ -44,8 +48,14 @@ public class Opomnik {
 		public void setCas(Time caas) {
 			this.cas = caas;
 		}
+		public void setKolicina(int kol) {
+			this.kolicina = kol;
+		}
+		public int getKolicina() {
+			return kolicina;
+		}
 		public Opomnik(Opomnik mojOpomnik) {
-			interval=mojOpomnik.interval;
+			kolicina=mojOpomnik.kolicina;
 			zdravilo=mojOpomnik.zdravilo;
 			cas=mojOpomnik.cas;
 		}

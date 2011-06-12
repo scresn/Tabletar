@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/med" android:paddingTop="15px">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:gravity="center">
-        <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/interval1" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px"></TextView>
+        <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px" android:text="Količina"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:gravity="center">
         <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:visibility="visible" android:drawingCacheQuality="high" android:animationCache="true" android:minWidth="110px" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Spinner>

@@ -19,7 +19,7 @@ public  class DatabaseHelper extends SQLiteOpenHelper
 	
 	private static final String DATABASE_CREATE2 =
 		"create table "+DBAdapterOpomniki.TABLE+" ("+DBAdapterOpomniki._ID+" integer primary key autoincrement, "
-		+ DBAdapterOpomniki.NAME+" TEXT not null, "+DBAdapterOpomniki.VALUE+" TEXT not null, " + DBAdapterOpomniki.TIME+" TEXT not null);";
+		+ DBAdapterOpomniki.NAME+" TEXT not null, "+DBAdapterOpomniki.VALUE+" INTEGER, " + DBAdapterOpomniki.TIME+" TEXT not null);";
 
 	DatabaseHelper(Context context) 
 	{

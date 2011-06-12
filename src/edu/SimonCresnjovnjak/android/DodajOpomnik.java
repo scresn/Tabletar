@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import android.R.integer;
 import android.R.string;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -22,6 +24,7 @@ public class DodajOpomnik extends Activity{
 		TimePicker tipck;
 		Spinner spi1, spi2;
 		Opomnik op=new Opomnik();
+		private static final int OPOMNIK_LIST_ID = 1;
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -40,13 +43,13 @@ public class DodajOpomnik extends Activity{
 			    	ArrayList<String> zacasni=new ArrayList<String>();
 			    	ArrayList<String> zacasni2=new ArrayList<String>();
 			    	
-			    	zacasni.add("Ponedeljek");
-			    	zacasni.add("Torek");
-			    	zacasni.add("Sreda");
-			    	zacasni.add("Èetrtek");
-			    	zacasni.add("Petek");
-			    	zacasni.add("Sobota");
-			    	zacasni.add("Nedelja");
+			    	zacasni.add("1");
+			    	zacasni.add("2");
+			    	zacasni.add("3");
+			    	zacasni.add("4");
+			    	zacasni.add("5");
+			    	zacasni.add("6");
+			    	zacasni.add("7");
 			    	
 			    	
 			    	
@@ -57,24 +60,29 @@ public class DodajOpomnik extends Activity{
 					ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, app.array_spinner1);
 			    	adapter2.setNotifyOnChange(true);
 					spi2.setAdapter(adapter2);
-
+					
 
 	}
+		
+		
 		 public void KlikDodajOpomnik(View v) {
 		    	switch (v.getId()) {
 				case R.id.imageButton1:
 				{
 					Toast.makeText(this, "Vaš opomnik je bil dodan", Toast.LENGTH_SHORT)
 					.show(); 
-					String a=spi1.getSelectedItem().toString();
+					int kl=Integer.parseInt(spi1.getSelectedItem().toString());
 					String aa=spi2.getSelectedItem().toString();
-					
+				
 					Time caaas=new Time();
-					//System.out.println(spi1.getSelectedItem().toString());
+					
+					
+					
 					caaas.hour=tipck.getCurrentHour();
 					caaas.minute=tipck.getCurrentMinute();
 					op.setCas(caaas);
-					op.setInterval(a);
+					//op.setInterval("drek");
+					op.setKolicina(kl);
 					op.setZdravilo(aa);
 					app.addOp(op);
 					app.array_spinner1.clear();

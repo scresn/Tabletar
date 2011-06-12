@@ -110,7 +110,7 @@ public class KjeSemActivity extends MapActivity {
 			double lng = location.getLongitude();
 			latLongString = "Lat:" + lat + "\nLong:" + lng;
 
-			myLocationText.setText("Trenutni polo≈æaj je:" + 
+			myLocationText.setText("Trenutni poloûaj je:" + 
 					latLongString); 
 		}
 	}

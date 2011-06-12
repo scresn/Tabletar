@@ -57,7 +57,7 @@ public class DBAdapterOpomniki implements BaseColumns {
 	{
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(NAME, opomnik.getZdravilo()); 
-		initialValues.put(VALUE, opomnik.getInterval()); 
+		initialValues.put(VALUE, opomnik.getKolicina()); 
 		initialValues.put(TIME, opomnik.getCas().format2445()); 
 		return db.insert(TABLE, null, initialValues);
 	}
@@ -109,7 +109,7 @@ public class DBAdapterOpomniki implements BaseColumns {
 	{
 		ContentValues args = new ContentValues();
 		args.put(NAME, tmp.getZdravilo());
-		args.put(VALUE, tmp.getInterval());
+		args.put(VALUE, tmp.getKolicina());
 		args.put(TIME, tmp.getCas().toString());
 		return db.update(TABLE, args, 
 				_ID + "=" + tmp.getDbID(), null) > 0;

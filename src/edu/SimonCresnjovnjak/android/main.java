@@ -37,8 +37,19 @@ public class main extends ListActivity {
     	app.fillFromDB();
     	
     }
-    
-    
+    @Override
+    public void onResume() {
+    super.onResume();
+    setListAdapter(app.op);
+    app.fillFromDB();
+    }
+    @Override
+    public void onPause() {
+    super.onPause();
+    setListAdapter(app.op);
+    app.fillFromDB();
+    }
+   
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
@@ -48,6 +59,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 		break;
 		
 	case R.id.dodajzl:
+		
 		Intent moj2=new Intent(this,DodajZalogo.class);
 		
 		this.startActivityForResult(moj2, DODAJ_ZALOGO_ACTIVITY_ID);
@@ -103,7 +115,7 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
 }
 
 
-@Override  //v razredu RezultatiListActivity
+@Override  
 
 protected Dialog onCreateDialog(int id) {
 

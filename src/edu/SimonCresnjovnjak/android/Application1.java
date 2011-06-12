@@ -41,10 +41,6 @@ public class Application1 extends Application{
         zd = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
         op = new OpomnikArrayAdapter(this,R.layout.opomniki_layout,listao);
 	}
-	public void testadd()
-	{
-	
-	}
 	public void fillFromDB() {
 		DBZd.open();
 		Cursor c = DBZd.getAll();
@@ -62,9 +58,10 @@ public class Application1 extends Application{
 		DBOp.open();
 		c = DBOp.getAll();
 		Opomnik tmpO;
+		listao.clear();
 		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 			tmpO = new Opomnik();
-			tmpO.setDbID(c.getLong(DBAdapterOpomniki.POS__ID));
+			tmpO.setKolicina(c.getInt(DBAdapterOpomniki.POS_VALUE));
 			tmpO.setZdravilo(c.getString(DBAdapterOpomniki.POS_NAME));
 			Time t = new Time();
 			String  bazaCas =c.getString(DBAdapterOpomniki.POS_TIME); 
