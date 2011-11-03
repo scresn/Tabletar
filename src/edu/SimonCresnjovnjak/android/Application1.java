@@ -3,6 +3,8 @@ package edu.SimonCresnjovnjak.android;
 import java.nio.channels.SelectableChannel;
 import java.sql.Connection;
 import java.sql.ResultSet;
+
+import android.R.integer;
 import android.text.format.Time;
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 
 import edu.SimonCresnjovnjak.data3.DBAdapterOpomniki;
 import edu.SimonCresnjovnjak.data3.DBAdapterZdravila;
+import edu.SimonCresnjovnjak.web.DeloZWebService;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Printer;
@@ -27,20 +30,119 @@ public class Application1 extends Application{
 	Opomnik MojOpomnik;
 	DBAdapterOpomniki DBOp;
 	DBAdapterZdravila DBZd;
+	DeloZWebService DWeb;
 	public ArrayList<String> array_spinner1;
 	
 	public void onCreate() {
         super.onCreate(); //ne pozabi
         DBOp = new DBAdapterOpomniki(this); 
         DBZd= new DBAdapterZdravila(this);
+        DWeb=new DeloZWebService();
+        //DWeb=new DeloZWebService();
         lista = new ArrayList<Zdravila>(); //inicializirat
         listao = new ArrayList<Opomnik>();
         array_spinner1= new ArrayList<String>();
          init();
-         fillFromDB();
+         DobiNaziviKolicinaZWeb();
+         //fillFromDB();
+        
+         
         zd = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
         op = new OpomnikArrayAdapter(this,R.layout.opomniki_layout,listao);
 	}
+	
+	//+++++++++++++++++++++++++++++ web +++++++++++++++++++++++
+	public void DobiNaziviKolicinaZWeb()
+	{
+		 lista.clear();
+		String tmp;
+		int x=1;
+		int b;
+		Zdravila tmp2;
+		tmp= DWeb.GetData().toString();
+		tmp2 = new Zdravila();
+		//for ()
+		String a[]=tmp.split("\\,");
+		for(int i = 0; i < a.length; i++){
+		//a[i]=tmp.split("\\,");
+			
+		}
+		for(int i=0;i<a.length;i++)
+		{
+			
+			if(x == 2)
+			{
+				x=0;
+				b= Integer.parseInt(a[i]);
+				tmp2.setKolicina(b);
+				System.out.println(a[i]);
+				lista.add(tmp2);
+				tmp2 = new Zdravila();
+			}
+			else
+			{
+				System.out.println(a[i]);
+				tmp2.setName(a[i]);
+			}
+							
+			x++;
+		}
+	}
+	
+	public void SpinnerImenaZdravil()
+	{
+		array_spinner1.clear();
+		String ime= DWeb.GetImeOP().toString();
+		String a[]=ime.split("\\,");
+		for(int i=0;i<a.length;i++)
+		{
+			array_spinner1.add(a[i]);
+		}
+	}
+	
+	public void DobiOP()
+	{
+		 listao.clear();
+		String tmp;
+		int x=1;
+		int b;
+		Opomnik tmp2;
+		tmp= DWeb.DobiOpomnik().toString();
+		tmp2 = new Opomnik();
+		//for ()
+		String a[]=tmp.split("\\,");;
+		for(int i = 0; i < a.length; i++){
+		//a[i]=tmp.split("\\,");
+			
+		}
+		for(int i=0;i<a.length;i++)
+		{
+			
+			if(x == 2)
+			{
+				System.out.println(a[i]);
+				Time t = new Time();
+				String  bazaCas =a[i]; 
+				t.parse(bazaCas); //pretvori string v time
+				tmp2.setCas(t);
+				
+			}
+			else if(x == 3)
+			{
+				x=0;
+				b=Integer.parseInt(a[i]);
+				tmp2.setKolicina(b);
+				tmp2 = new Opomnik();
+			}
+			else
+			{
+				tmp2.setZdravilo(a[i]);
+			}
+							
+			x++;
+		}
+	}
+	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public void fillFromDB() {
 		DBZd.open();
 		Cursor c = DBZd.getAll();
