@@ -50,7 +50,9 @@ public class NovoZdr extends Activity {
 						String a=spi1.getItemAtPosition(spi1.getSelectedItemPosition()).toString();
 						int aa= Integer.parseInt(a);
 						app.MojaZdravila.setKolicina(aa);
-						app.addZd(app.MojaZdravila);
+						//app.addZd(app.MojaZdravila);
+						app.DWeb.SendData(b, aa);
+						
 					}
 					else
 					{

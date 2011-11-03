@@ -36,7 +36,7 @@ public class DodajOpomnik extends Activity{
 			spi2=(Spinner) findViewById(R.id.spinner2);
 			tipck=(TimePicker) findViewById(R.id.timePicker1);
 			
-			app.getnazivi();
+			app.SpinnerImenaZdravil();
 			
 			 tipck.setIs24HourView(true);
 			   
@@ -81,12 +81,14 @@ public class DodajOpomnik extends Activity{
 					caaas.hour=tipck.getCurrentHour();
 					caaas.minute=tipck.getCurrentMinute();
 					op.setCas(caaas);
-					//op.setInterval("drek");
+					
+				
 					op.setKolicina(kl);
 					op.setZdravilo(aa);
-					app.addOp(op);
+					
 					app.array_spinner1.clear();
-					app.fillFromDB();
+					//app.fillFromDB();
+					app.DWeb.InsertOpomnik(aa,caaas.format2445(),kl);
 				}
 		    	}
 		 }

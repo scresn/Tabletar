@@ -17,17 +17,22 @@ public class OpomnikiListActivity extends ListActivity implements OnItemClickLis
 		setListAdapter(app.op);
 		this.getListView().setOnItemClickListener(this);
 		app.listao.clear();
-		app.fillFromDB();
+		//app.fillFromDB();
+		app.DWeb.DobiOpomnik();
+		app.DobiOP();
 	}
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public void onResume() {
 		super.onResume();
 		app.listao.clear();
-		app.fillFromDB();
+		//app.fillFromDB();
+		app.DWeb.DobiOpomnik();
+		app.DobiOP();
 }
+
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		
+	}
 }

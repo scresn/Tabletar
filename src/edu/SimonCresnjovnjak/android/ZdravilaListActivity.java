@@ -1,10 +1,5 @@
 package edu.SimonCresnjovnjak.android;
 
-
-
-
-
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,14 +16,17 @@ public class ZdravilaListActivity extends ListActivity implements OnItemClickLis
 		app = (Application1) getApplication();
 		setListAdapter(app.zd);
 		this.getListView().setOnItemClickListener(this);
-		app.lista.clear();
-		app.fillFromDB();
+		//app.lista.clear(); 
+		//app.fillFromDB();
+		// System.out.print(app.DWeb.GetData());
+		app.DobiNaziviKolicinaZWeb();
 	}
-	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 } 
 

@@ -26,8 +26,8 @@ public class DodajZalogo extends Activity{
 			
 			spi2=(Spinner) findViewById(R.id.spinner2);
 			spi1=(Spinner) findViewById(R.id.spinner1);
-			
-			app.getnazivi();
+			app.SpinnerImenaZdravil();
+			//app.getnazivi();
 			
 			
 			ArrayList<String> araylist2 = new ArrayList<String>();
@@ -55,9 +55,11 @@ public class DodajZalogo extends Activity{
 					.show(); 
 					int a=Integer.parseInt(spi2.getSelectedItem().toString());
 					//System.out.println(spi1.getSelectedItem().toString());
-					app.DodajZal(spi1.getSelectedItem().toString(),a );
+					//app.DodajZal(spi1.getSelectedItem().toString(),a );
+					app.DWeb.InsertZdravilo(spi1.getSelectedItem().toString(),a );
 					app.array_spinner1.clear();
-					app.fillFromDB();
+					//app.fillFromDB();
+					app.DobiNaziviKolicinaZWeb();
 				}
 		    	}
 		 }

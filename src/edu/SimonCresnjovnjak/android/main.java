@@ -31,25 +31,28 @@ public class main extends ListActivity {
     	app = (Application1) getApplication();
     	setListAdapter(app.op);
     		Intent moj3=new Intent(this,NovoZdr.class);
-    		
+    		app.DobiOP();
     		this.startActivityForResult(moj3, DODAJ_NOVO_ACTIVITY_ID);
     	
-    	app.fillFromDB();
+    	
     	
     }
     @Override
     public void onResume() {
     super.onResume();
     setListAdapter(app.op);
-    app.fillFromDB();
+    app.DobiOP();
     }
     @Override
     public void onPause() {
     super.onPause();
     setListAdapter(app.op);
-    app.fillFromDB();
+    app.DobiOP();
+    //app.fillFromDB();
     }
    
+    
+    
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {

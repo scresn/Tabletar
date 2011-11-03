@@ -18,6 +18,7 @@ import android.database.Cursor;
 import android.util.Printer;
 import android.webkit.ConsoleMessage;
 import android.widget.ArrayAdapter;
+import android.text.format.Time;
 
 import android.app.Application;
 
@@ -42,8 +43,9 @@ public class Application1 extends Application{
         lista = new ArrayList<Zdravila>(); //inicializirat
         listao = new ArrayList<Opomnik>();
         array_spinner1= new ArrayList<String>();
-         init();
+         //init();
          DobiNaziviKolicinaZWeb();
+         DobiOP();
          //fillFromDB();
         
          
@@ -75,13 +77,13 @@ public class Application1 extends Application{
 				x=0;
 				b= Integer.parseInt(a[i]);
 				tmp2.setKolicina(b);
-				System.out.println(a[i]);
+				//System.out.println(a[i]);
 				lista.add(tmp2);
 				tmp2 = new Zdravila();
 			}
 			else
 			{
-				System.out.println(a[i]);
+				//System.out.println(a[i]);
 				tmp2.setName(a[i]);
 			}
 							
@@ -110,9 +112,10 @@ public class Application1 extends Application{
 		tmp= DWeb.DobiOpomnik().toString();
 		tmp2 = new Opomnik();
 		//for ()
-		String a[]=tmp.split("\\,");;
+		String a[]=tmp.split("\\;");
 		for(int i = 0; i < a.length; i++){
 		//a[i]=tmp.split("\\,");
+			//System.out.println(a[i]);
 			
 		}
 		for(int i=0;i<a.length;i++)
@@ -120,10 +123,12 @@ public class Application1 extends Application{
 			
 			if(x == 2)
 			{
-				System.out.println(a[i]);
+				//System.out.println(a[i]);
 				Time t = new Time();
 				String  bazaCas =a[i]; 
+				
 				t.parse(bazaCas); //pretvori string v time
+				//System.out.println(t);
 				tmp2.setCas(t);
 				
 			}
@@ -131,11 +136,14 @@ public class Application1 extends Application{
 			{
 				x=0;
 				b=Integer.parseInt(a[i]);
+				//System.out.println(b);
 				tmp2.setKolicina(b);
+				listao.add(tmp2);
 				tmp2 = new Opomnik();
 			}
-			else
+			else if(x==1)
 			{
+				//System.out.println(a[i]);
 				tmp2.setZdravilo(a[i]);
 			}
 							
