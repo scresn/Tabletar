@@ -51,8 +51,7 @@ public class DodajZalogo extends Activity{
 		    	switch (v.getId()) {
 				case R.id.imageButton1:
 				{
-					Toast.makeText(this, "Vaša zaloga je bila dodana", Toast.LENGTH_SHORT)
-					.show(); 
+					
 					int a=Integer.parseInt(spi2.getSelectedItem().toString());
 					//System.out.println(spi1.getSelectedItem().toString());
 					//app.DodajZal(spi1.getSelectedItem().toString(),a );
@@ -60,6 +59,11 @@ public class DodajZalogo extends Activity{
 					app.array_spinner1.clear();
 					//app.fillFromDB();
 					app.DobiNaziviKolicinaZWeb();
+					app.SpinnerImenaZdravil();
+					
+					Toast.makeText(this, "Vaša zaloga je dodana", Toast.LENGTH_SHORT)
+					.show();
+					break;
 				}
 		    	}
 		 }

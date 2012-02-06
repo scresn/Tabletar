@@ -45,14 +45,14 @@ public class NovoZdr extends Activity {
 					if(!b.contentEquals(""))
 					{
 						app.MojaZdravila.setName(b);
-						Toast.makeText(this, "Vaše zdravilo je bilo dodano", Toast.LENGTH_SHORT)
-						.show();
+						
 						String a=spi1.getItemAtPosition(spi1.getSelectedItemPosition()).toString();
 						int aa= Integer.parseInt(a);
 						app.MojaZdravila.setKolicina(aa);
 						//app.addZd(app.MojaZdravila);
 						app.DWeb.SendData(b, aa);
-						
+						Toast.makeText(this, "Vaše zdravilo je bilo dodano", Toast.LENGTH_SHORT)
+						.show();
 					}
 					else
 					{

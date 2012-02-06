@@ -4,18 +4,56 @@
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="8" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	
+    
 
+      
     <application android:name="Application1" android:icon="@drawable/pill_icon_hy" android:label="@string/app_name">
-        <activity android:name=".main"
+		 <activity android:name=".SplashScreen"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		
-		
+        <activity android:name="edu.SimonCresnjovnjak.android.Tab" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+            
+			</intent-filter>
+		</activity>
+        <activity android:name=".Ring" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+			</intent-filter>
+		</activity>
 		<activity android:name=".ZdravilaListActivity" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".ParsanjeListActivity2" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".iskanje" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".ParsanjeListActivity" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".OpomnikiListActivity" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".abec" android:label="@string/app_name">
 			<intent-filter>
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
@@ -25,26 +63,47 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity android:name="edu.SimonCresnjovnjak.alarm.AlarmActivity" android:label="@string/app_name">
+			<intent-filter>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 		<activity android:name=".DodajZalogo" android:label="@string/app_name">
 			<intent-filter>
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+				<service android:name="edu.SimonCresnjovnjak.alarm.AlarmService" />
 		</activity>
 		<activity android:name=".NovoZdr" android:label="@string/app_name">
 			<intent-filter>
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity>
-			<activity android:name="edu.SimonCresnjovnajk.maps.KjeSemActivity" android:label="@string/app_name">
+			</activity>
+<receiver android:name="edu.SimonCresnjovnjak.widget.MyWidgetProvider">
 			<intent-filter>
-				
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/widget_info" />
+		</receiver>
+		<service android:name="edu.SimonCresnjovnjak.widget.UpdateWidgetService" />
+		
+		
+		
+		<activity android:name="edu.SimonCresnjovnajk.maps.KjeSemActivity" android:label="@string/app_name">
+			<intent-filter>
+			
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
 		<uses-library android:name="com.google.android.maps"/>
-		
+<service android:name="edu.SimonCresnjovnjak.alarm.MyAlarmService" />
+	
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+   
+   <uses-permission android:name="android.permission.INTERNET" />
+			  	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
 </manifest>

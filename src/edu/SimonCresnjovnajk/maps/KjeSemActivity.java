@@ -28,10 +28,7 @@ public class KjeSemActivity extends MapActivity {
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
-	//debug
-	//keytool -list -alias androiddebugkey -keystore /Users/matej/.android/debug.keystore -storepass android -keypass android
-	//8D:22:34:2A:C0:70:9C:0C:B4:A1:AC:B3:C7:12:2D:1C
-	//http://code.google.com/android/maps-api-signup.html
+
 	MapController mapController;
 	MyPositionOverlay positionOverlay;
 

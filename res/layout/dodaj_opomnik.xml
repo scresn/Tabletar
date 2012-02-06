@@ -7,7 +7,16 @@
         <TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px" android:text="Količina"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:gravity="center">
-        <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:visibility="visible" android:drawingCacheQuality="high" android:animationCache="true" android:minWidth="110px" android:layout_width="match_parent" android:layout_marginLeft="50px" android:layout_marginRight="50px"></Spinner>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:layout_weight="1"
+            android:minWidth="110px" />
+
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="match_parent" android:gravity="center">
         <TextView android:layout_height="wrap_content" android:text="@string/Zdravilo" android:id="@+id/textView2" android:layout_width="wrap_content" android:textSize="18px" android:textColor="@color/black" android:capitalize="characters" android:layout_marginLeft="50px" android:layout_marginRight="50px"></TextView>

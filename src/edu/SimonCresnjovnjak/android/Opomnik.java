@@ -47,6 +47,7 @@ public class Opomnik {
 
 		public void setCas(Time caas) {
 			this.cas = caas;
+			
 		}
 		public void setKolicina(int kol) {
 			this.kolicina = kol;

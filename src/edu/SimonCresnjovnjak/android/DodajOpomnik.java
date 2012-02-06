@@ -2,14 +2,24 @@ package edu.SimonCresnjovnjak.android;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+
+
+import edu.SimonCresnjovnjak.alarm.MyAlarmService;
+
 
 import android.R.integer;
 import android.R.string;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.format.Time;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,12 +29,14 @@ import android.widget.Toast;
 
 
 public class DodajOpomnik extends Activity{
-	
+	 private static final int isk = 1;
 		Application1 app;
 		TimePicker tipck;
 		Spinner spi1, spi2;
 		Opomnik op=new Opomnik();
+		
 		private static final int OPOMNIK_LIST_ID = 1;
+	
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -37,7 +49,7 @@ public class DodajOpomnik extends Activity{
 			tipck=(TimePicker) findViewById(R.id.timePicker1);
 			
 			app.SpinnerImenaZdravil();
-			
+			app.DobiOP();
 			 tipck.setIs24HourView(true);
 			   
 			    	ArrayList<String> zacasni=new ArrayList<String>();
@@ -60,9 +72,9 @@ public class DodajOpomnik extends Activity{
 					ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, app.array_spinner1);
 			    	adapter2.setNotifyOnChange(true);
 					spi2.setAdapter(adapter2);
-					
+					 
 
-	}
+					}
 		
 		
 		 public void KlikDodajOpomnik(View v) {
@@ -75,11 +87,15 @@ public class DodajOpomnik extends Activity{
 					String aa=spi2.getSelectedItem().toString();
 				
 					Time caaas=new Time();
+					int ura;
+					int minuta;
 					
-					
-					
+					ura=tipck.getCurrentHour();
+					minuta=tipck.getCurrentMinute();
 					caaas.hour=tipck.getCurrentHour();
 					caaas.minute=tipck.getCurrentMinute();
+					String t;
+					
 					op.setCas(caaas);
 					
 				
@@ -89,8 +105,16 @@ public class DodajOpomnik extends Activity{
 					app.array_spinner1.clear();
 					//app.fillFromDB();
 					app.DWeb.InsertOpomnik(aa,caaas.format2445(),kl);
-				}
-		    	}
+//					app.mAlarmStart(ura,minuta);
+					
+					app.mAlarmStart(ura, minuta,aa,spi1.getSelectedItem().toString());
+				
+				}}
+					
+				
+		    	
 		 }
-}
+		    	
+		 }
+
 

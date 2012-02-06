@@ -17,7 +17,7 @@ public class OpomnikArrayAdapter extends ArrayAdapter<Opomnik> { //Step 4.8 POPR
 		super(context, textViewResourceId,objects);
 	    mInflater = LayoutInflater.from(context);
 	}
-	
+	Application1 app;
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Opomnik tmp = getItem(position);

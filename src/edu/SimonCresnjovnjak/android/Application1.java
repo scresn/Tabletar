@@ -7,50 +7,201 @@ import java.sql.ResultSet;
 import android.R.integer;
 import android.text.format.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 
+
+
+import edu.SimonCresnjovnjak.alarm.MyAlarmService;
 import edu.SimonCresnjovnjak.data3.DBAdapterOpomniki;
 import edu.SimonCresnjovnjak.data3.DBAdapterZdravila;
+import edu.SimonCresnjovnjak.parsanje.razpoznava;
 import edu.SimonCresnjovnjak.web.DeloZWebService;
+
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 import android.util.Printer;
 import android.webkit.ConsoleMessage;
 import android.widget.ArrayAdapter;
-import android.text.format.Time;
+import android.widget.Toast;
 
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
 
 public class Application1 extends Application{
 	public ArrayList<Zdravila> lista;
 	public ArrayList<Opomnik> listao;
 	ZdravilaArrayAdapter zd;
+	ParsanjeArrayAdapter pr;
+	ParsanjeArrayAdapter2 pr2;
 	OpomnikArrayAdapter op;
 	Zdravila MojaZdravila;
+	public String zdravilo, kolicina;
+	razpoznava opi;
+	Date dt;
+	private PendingIntent mAlarmSender;
+	private PendingIntent pendingIntent;
 	Opomnik MojOpomnik;
 	DBAdapterOpomniki DBOp;
 	DBAdapterZdravila DBZd;
-	DeloZWebService DWeb;
+	DeloZWebService DWeb=new DeloZWebService();;
 	public ArrayList<String> array_spinner1;
+	public String[] poljestringov;
+	public int stevec2;
+	pars a =new pars();
+	public ArrayList<pars> lista_pars;
+	public ArrayList<pars> lista_pars2;
 	
+	public boolean isMediaRunning;
+	boolean isFound;
+	boolean isFirst;
+	Intent alarmIntent;
+	int trenutnaUra, trenutnaMinuta, sekunda;
+	String name="test";
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	private List<String> news;
+	private int stevec;
+	public List<String> getNews() {
+		return news;
+	}
+	public void setNews(List<String> news) {
+		this.news = news;
+	}
+	public int getStevec() {
+		return stevec;
+	}
+	public void setStevec(int stevec) {
+		this.stevec = stevec;
+	}
+	
+	
+	public int getStevec2() {
+		return stevec2;
+	}
+
+	public void setStevec2(int stevec) {
+		if(stevec==poljestringov.length)
+		{
+			this.stevec2=0;
+		}
+		else
+		{
+		this.stevec2=stevec;
+		}
+	}
+
 	public void onCreate() {
         super.onCreate(); //ne pozabi
         DBOp = new DBAdapterOpomniki(this); 
         DBZd= new DBAdapterZdravila(this);
-        DWeb=new DeloZWebService();
+        opi=new razpoznava();
         //DWeb=new DeloZWebService();
         lista = new ArrayList<Zdravila>(); //inicializirat
-        listao = new ArrayList<Opomnik>();
+        listao= new ArrayList<Opomnik>();
+        lista_pars=new ArrayList<pars>();
+
+        lista_pars2=new ArrayList<pars>();
         array_spinner1= new ArrayList<String>();
-         //init();
+        
+        zdravilo="";
+        kolicina="";
+        sekunda = 0;
+		trenutnaUra = 0;
+		trenutnaMinuta = 0;
+//		
+//		alarmService = new AlarmService();
+//		alarmIntent = new Intent(Application1.this, alarmService.getClass());
+//		mAlarmSender = PendingIntent.getService(Application1.this,
+//				0, alarmIntent, 0);
+        
+         init();
          DobiNaziviKolicinaZWeb();
          DobiOP();
          //fillFromDB();
-        
+        DobiNaziviKolicinaZWeb();
+        polniPars();
          
         zd = new ZdravilaArrayAdapter(this, R.layout.zdravila_layout,lista); //Step 4.10 Globalna lista
         op = new OpomnikArrayAdapter(this,R.layout.opomniki_layout,listao);
+        pr = new ParsanjeArrayAdapter(this,R.layout.pars_layout,lista_pars);
+        pr2 = new ParsanjeArrayAdapter2(this,R.layout.pars_layout2,lista_pars2);
+        
+        mAlarmSender = PendingIntent.getService(Application1.this,
+                0, new Intent(Application1.this, MyAlarmService.class), 0);
+	}
+	
+public String getZdravilo() {
+		return zdravilo;
+	}
+	public void setZdravilo(String zdravilo) {
+		this.zdravilo = zdravilo;
+	}
+	public String getKolicina() {
+		return kolicina;
+	}
+	public void setKolicina(String kolicina) {
+		this.kolicina = kolicina;
+	}
+	//	public void setupNextAlarm() {
+//	}
+//	
+	public void mAlarmStop() {
+		
+        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+        am.cancel(mAlarmSender);
+
+		
+		
+		
+        Toast.makeText(Application1.this, "STOPPED!!!",
+                Toast.LENGTH_LONG).show();
+	}
+
+public void mAlarmStart(int nastavljenaUra, int nastavljenaMinuta, String imezdr, String kolzdr) {		
+		
+	setKolicina(kolzdr);
+	setZdravilo(imezdr);
+	
+		dt = new Date();
+		trenutnaUra = dt.getHours();
+		trenutnaMinuta = dt.getMinutes();
+
+		 Intent myIntent = new Intent(Application1.this, MyAlarmService.class);
+		   pendingIntent = PendingIntent.getService(Application1.this, 0, myIntent, 0);
+
+		            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+		            if(nastavljenaUra == trenutnaUra && nastavljenaMinuta == trenutnaMinuta) {
+		    			sekunda = 0;
+		    		}
+		    		else if(((nastavljenaUra == trenutnaUra) && (nastavljenaMinuta > trenutnaMinuta)) || (nastavljenaUra > trenutnaUra)) {
+		    			sekunda = ((nastavljenaUra*60)+nastavljenaMinuta) - ((trenutnaUra*60)+trenutnaMinuta);
+		    		}
+		    		else if (nastavljenaUra < trenutnaUra) {
+		    			sekunda = (1440 - ((trenutnaUra*60)+trenutnaMinuta)) + ((nastavljenaUra * 60) + nastavljenaMinuta);
+		    		}
+		    		else sekunda = 0;
+		    
+		    		sekunda = sekunda * 60;
+		            Calendar calendar = Calendar.getInstance();
+		            calendar.setTimeInMillis(System.currentTimeMillis());
+		            calendar.add(Calendar.SECOND, sekunda);
+		            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+		         
+		   Toast.makeText(Application1.this, "Opomnik nastavljen", Toast.LENGTH_LONG).show();
+		  
 	}
 	
 	//+++++++++++++++++++++++++++++ web +++++++++++++++++++++++
@@ -69,6 +220,7 @@ public class Application1 extends Application{
 		//a[i]=tmp.split("\\,");
 			
 		}
+		
 		for(int i=0;i<a.length;i++)
 		{
 			
@@ -77,13 +229,14 @@ public class Application1 extends Application{
 				x=0;
 				b= Integer.parseInt(a[i]);
 				tmp2.setKolicina(b);
-				//System.out.println(a[i]);
+//				System.out.println(a[i]);
 				lista.add(tmp2);
+				//Log.v("listazdr", lista.toString());
 				tmp2 = new Zdravila();
 			}
 			else
 			{
-				//System.out.println(a[i]);
+//				System.out.println(a[i]);
 				tmp2.setName(a[i]);
 			}
 							
@@ -101,23 +254,55 @@ public class Application1 extends Application{
 			array_spinner1.add(a[i]);
 		}
 	}
-	
+	public void polniPars()
+	{
+		lista_pars.addAll(opi.pozeni());
+	}
+	public void polnicrke(String a)
+	{
+		lista_pars.clear();
+		lista_pars.addAll(opi.pozenicrke(a));
+	}
+	public void polnicrke2(String a)
+	{
+		lista_pars2.clear();
+		lista_pars2.addAll(opi.pozenicrke(a));
+	}
+	public void polniiskanje(String a)
+	{
+		lista_pars.clear();
+		lista_pars.addAll(opi.isci(a));
+	}
+	public void polniiskanje2(String a)
+	{
+		lista_pars2.clear();
+		lista_pars2.addAll(opi.isci(a));
+	}
 	public void DobiOP()
 	{
+		int c=0;
 		 listao.clear();
 		String tmp;
 		int x=1;
 		int b;
+
+		
 		Opomnik tmp2;
 		tmp= DWeb.DobiOpomnik().toString();
 		tmp2 = new Opomnik();
 		//for ()
-		String a[]=tmp.split("\\;");
+		
+		
+		
+			String a[]=tmp.split("\\,");
 		for(int i = 0; i < a.length; i++){
 		//a[i]=tmp.split("\\,");
-			//System.out.println(a[i]);
 			
 		}
+		poljestringov= new String[a.length/3];
+		poljestringov[0]="";
+		if((a.length !=0) )
+		{
 		for(int i=0;i<a.length;i++)
 		{
 			
@@ -126,29 +311,48 @@ public class Application1 extends Application{
 				//System.out.println(a[i]);
 				Time t = new Time();
 				String  bazaCas =a[i]; 
-				
 				t.parse(bazaCas); //pretvori string v time
-				//System.out.println(t);
-				tmp2.setCas(t);
+				String bb=t.format2445();
+				Time tt =new Time();
+				tt.hour=t.hour;
+				tt.minute=t.minute;
+				tt.timezone="null";
+				poljestringov[c]+=t.hour+":"+ t.minute+" ";
+//				poljestringov.add(c, object))(t.hour+":"+ t.minute+" ");
+				
+//				Log.v("cas",poljestringov[c] );
+				tmp2.setCas(tt);
 				
 			}
 			else if(x == 3)
 			{
+				
+				poljestringov[c]+=a[i].toString() + "X ";
+				//poljestringov
+				//Log.v("koncni", poljestringov[c]);
 				x=0;
+				c++;
 				b=Integer.parseInt(a[i]);
-				//System.out.println(b);
+//				Log.v("kolicina",String.valueOf(b) );
 				tmp2.setKolicina(b);
 				listao.add(tmp2);
+				//Log.v("lista", listao.toString());
 				tmp2 = new Opomnik();
+				
+//				poljestringov[c]="";
 			}
-			else if(x==1)
+			else
 			{
-				//System.out.println(a[i]);
+				poljestringov[c]="";
+				poljestringov[c]+=a[i] + " ";
 				tmp2.setZdravilo(a[i]);
+//				Log.v("zdravilo",poljestringov[c] );
 			}
 							
 			x++;
 		}
+		}
+		
 	}
 	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public void fillFromDB() {
@@ -244,7 +448,7 @@ public class Application1 extends Application{
 			//System.out.println(naz);
 			if(naz.contentEquals(zdravilo))
 			{
-				System.out.println(c.getString(DBAdapterZdravila.POS_NAZIV));
+				//System.out.println(c.getString(DBAdapterZdravila.POS_NAZIV));
 				kol=c.getInt(DBAdapterZdravila.POS_KOLICINA);
 				DBZd.deleteZdravila(c.getLong(c.getPosition()));
 				tmp.setKolicina(kol+kolicina);

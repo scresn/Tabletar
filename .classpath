@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="C:/Users/scresn/Downloads/android-ksoap2-build/android-ksoap2/lib/ksoap2-j2se-full-2.1.2.jar"/>
+	<classpathentry kind="lib" path="libs/htmlcleaner-2.2.jar"/>
+	<classpathentry kind="lib" path="libs/ksoap2-android-assembly-2.5.8-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

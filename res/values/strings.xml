@@ -7,10 +7,20 @@
     <string name="Zdravilo">Zdravilo</string>
     <string name="Cas">Čas</string>
     <string name="Kolicina">Kolicina</string>
-    <color name="black"> #040404</color>
+    <color name="black">#000000</color>
     <color name="White">#FFFFFF</color>
-    
-    
+  <string name="start_alarm">10</string>
+    <string name="alarm_btn">Start alarm in X sekund</string>
+        <string name="alarm_txt">Moje besedilo</string>
+        <string name="alarm_stop">Stop alarm</string>
+          <string name="alarm_start">START alarm</string>
+             <string name="alarm_name">AlarmTest</string>
+             <color name="yelow">#FFFF00</color>
+             <color name="red">#FF0000</color>
+             <color name="siva">#464646</color>
+             <color name="orange">#FF9700</color>
+             <color name="green">#00FF00</color>
+             <color name="neka">#FF00FF</color>
     
     
 </resources>

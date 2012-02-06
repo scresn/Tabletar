@@ -21,12 +21,18 @@ public class ZdravilaListActivity extends ListActivity implements OnItemClickLis
 		// System.out.print(app.DWeb.GetData());
 		app.DobiNaziviKolicinaZWeb();
 	}
+	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		
 	}
+//	@Override
+//	public void onResume() {
+//		super.onResume();
+//		//app.listao.clear();
+//		//app.fillFromDB();
+//		app.DobiNaziviKolicinaZWeb();
+//}
 
-
-	
 } 
 

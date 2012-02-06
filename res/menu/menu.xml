@@ -2,13 +2,9 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
   
-  <item android:id="@+id/dodajop" android:icon="@android:drawable/ic_menu_rotate" android:title="Dodaj opomnik" ></item>
-  <item android:icon="@android:drawable/ic_menu_info_details" android:title="Novo Zdravilo" android:id="@+id/novo"></item>
-  <item android:id="@+id/listazdr" android:icon="@android:drawable/ic_menu_close_clear_cancel" android:title="Pregled zdravil" ></item>
-  <item android:icon="@android:drawable/ic_menu_preferences" android:title="Dodaj Zalogo" android:id="@+id/dodajzl"></item>
-  <item android:id="@+id/map" android:icon="@android:drawable/ic_menu_compass" android:title="Mapa" ></item>
-  <item android:id="@+id/izh" android:icon="@android:drawable/ic_menu_close_clear_cancel" android:title="Izhod" ></item>
-
+  <item android:id="@+id/crke" android:icon="@android:drawable/ic_menu_rotate" android:title="Izberi crko" ></item>
+  <item android:icon="@android:drawable/ic_menu_info_details" android:title="Iskanje" android:id="@+id/isci"></item>
+  <item android:icon="@android:drawable/ic_menu_preferences" android:title="zemljevid" android:id="@+id/zem"></item>
   
   
 </menu>
